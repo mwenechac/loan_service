@@ -11,7 +11,7 @@ class InitiateLoanTestCase(APITestCase):
         data = {
             "amount": 1000,
             "interest": 10,
-            "date": "2022-01-26"
+            "date": "2022-01-28"
         }
-        response = self.client.post("/loan/initiate-loan", data)
+        response = self.client.post("/loan/initiate", data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
