@@ -77,18 +77,18 @@ The directory structure has a modular approach for separation of concerns.
  From the app directory run the following command to run tests in the project.
      - Run the tests.
      
-          ```
-          python manage.py test
-          ```
-     If the tests run successfully, you will see an **OK** output on the terminal and you are good to go!
+      ```
+        python manage.py test
+      ```
+   If the tests run successfully, you will see an **OK** output on the terminal and you are good to go!
      
 ## Testing
 
 1. Run the service using the following command from the app directory:
 
-          ```
-          python manage.py runserver
-          ```
+    ```
+     python manage.py runserver
+    ```
  2. Use postman to interact with the apis.
     - Initiate loan: call the initiate loan api using the url: http://127.0.0.1:8000/loan/initiate. If you are not running the project locally, subsitute the IP address with an applicable address. Make a **POST** request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
     
