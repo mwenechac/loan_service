@@ -1,5 +1,5 @@
-# loan_service
-A simple loan api for initiating loans, making payments and checking outstanding balances.
+# Loan Service
+A simple loan api for initiating loans, making payments and checking outstanding balances. The api is build using Djanog and Django rest framework
 
 ## Directory Structure
 The directory structure has a modular approach for separation of concerns.
@@ -38,7 +38,7 @@ The directory structure has a modular approach for separation of concerns.
       ```
       source env/bin/activate
       ```
- 3. Install packages
+ 3. Install packages:
  At the root of the project directory run the following command from the terminal to install packages from the requirements.txt file.
  
     ```
@@ -58,23 +58,33 @@ The directory structure has a modular approach for separation of concerns.
           }
       }
     ```
- 
- 
- 5. Run Unit Tests
- Navigate to the app direcroty from the root and the run the following command to run tests in the project.
+ 5. Run migrations.
+ Navigate to the app direcroty from the root and the run the following command to run migrations and set up the database and the tables.
     - Navigate to the app directory.
       
         ```
         cd app
         ```
+     - Run migrations.
+     
+          ```
+          python manage.py makemigrations
+          ```
+     
+ 
+ 6. Run Unit Tests:
+ From the app directory run the following command to run tests in the project.
      - Run the tests.
+     
           ```
           python manage.py test
           ```
-     If the tests run successfully, you will see an OK output on the terminal and you are good to go!
+     If the tests run successfully, you will see an **OK** output on the terminal and you are good to go!
      
- 6. Use postman to interact with the apis.
-    - Initiate loan: call the initiate loan api using the url: http://127.0.0.1:8000/loan/initiate. If you are not runing the project locally, subsitute the IP address with an applicable address. Make a post request with the following request body. **The date format is yyyy-mm-dd.**
+## Testing
+
+ 1. Use postman to interact with the apis.
+    - Initiate loan: call the initiate loan api using the url: http://127.0.0.1:8000/loan/initiate. If you are not runing the project locally, subsitute the IP address with an applicable address. Make a post request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
     
         ```
            {
@@ -90,7 +100,7 @@ The directory structure has a modular approach for separation of concerns.
              "message": "A loan has been initiated"
           }
         ```
-     - Make Payment: call the make payment api using the url: http://127.0.0.1:8000/payment/pay. If you are not runing the project locally, subsitute the IP            address with an applicable address. Make a post request with the following request body. **The date format is yyyy-mm-dd.**
+     - Make Payment: call the make payment api using the url: http://127.0.0.1:8000/payment/pay. If you are not runing the project locally, subsitute the IP            address with an applicable address. Make a post request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
     
         ```
            {
@@ -106,7 +116,7 @@ The directory structure has a modular approach for separation of concerns.
             "balance": 600.0
           }
         ```
-    - Get balance: call get balance api using the url: http://127.0.0.1:8000/balance/get-balance?date=2023-01-26. The data is passed as a parameter in the url. **The date format is yyyy-mm-dd.** If you are not runing the project locally, subsitute the localhost IP address with an applicable address
+    - Get balance: call get balance api using the url: http://127.0.0.1:8000/balance/get-balance?date=2023-01-26. The date is passed as a parameter in the url. **The date format is yyyy-mm-dd.** If you are not runing the project locally, subsitute the localhost IP address with an applicable address
    
         Make a get request and if the Django server is running fine you should get a 200 HTTP response similar to:
         
