@@ -20,9 +20,9 @@ class LoanSerializer(serializers.ModelSerializer):
         }
 	
 	def validate(self,data):
-		if data['date'] < datetime.now().date():
+		if data['date'] != datetime.now().date():
 			raise serializers.ValidationError(
-				{'data': 'Date must be greater than or equal to the current date.'}
+				{'data': 'You can only initiate a loan for today.'}
 			)
 		return data
 		

@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from core.models import Loan
+from datetime import datetime
+
 
 class PaymentSerializer(serializers.ModelSerializer):
 	'''
@@ -14,3 +16,8 @@ class PaymentSerializer(serializers.ModelSerializer):
             'amount': {'required': True},
             'date': {'required': True}
         }
+		
+	def validate(self, data):
+		if data['date'] < datetime.now().date():
+			raise serializers.ValidationError({"date": "Date must be greater than or equal to the current date."})
+		return data
