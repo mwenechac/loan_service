@@ -17,7 +17,7 @@ The directory structure has a modular approach for separation of concerns.
 ### Prerequisites
 1. Postgres: You need to have postgres installed on your local machine.
 2. Python 3.9: You need to gave Python 3 installed on your local machine
-3. Postman: You need postman installed.
+3. Postman: You need postman to test the api endpoints.
 
 ### Procedure
 1. Clone the project from this repository.
