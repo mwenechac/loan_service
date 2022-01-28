@@ -1,13 +1,13 @@
 # Loan Service
-A simple loan api for initiating loans, making payments and checking outstanding balances. The api is build using Djanog and Django rest framework
+A simple loan api for initiating loans, making payments and checking outstanding balances. The api is built using Djanog and Django rest framework
 
 ## Directory Structure
 The directory structure has a modular approach for separation of concerns.
 
-1. **App**: This directory contains app, core, payment, load, and balance subdirectories as follows:
+1. **App**: This directory contains app, core, payment, loan, and balance subdirectories as follows:
   
-    - App: This is the main directory used to run the app
-    - Core: This subdirectory holds the shared business logic between various components of the services such as models, core unit tests and business logic.
+    - App: This is the main directory used to manage and run the service.
+    - Core: This subdirectory holds shared business logic between various components of the service such as models, core unit tests and business logic etc.
     - Payment: This subdirectory holds the implementation of the payment api with its associated unit tests.
     - Loan: This subdirectory holds the implementation of the initiate loan api with its associated unit tests.
     - Balance: This subdirectory holds the implementation of the get balance api with its associated unit tests.
@@ -16,16 +16,17 @@ The directory structure has a modular approach for separation of concerns.
 
 ### Prerequisites
 1. Postgres: You need to have postgres installed on your local machine.
-2. Python 3.9: You need to gave Python 3 installed on your local machine
+2. Python 3.9: You need to have Python 3 installed on your local machine
 3. Postman: You need postman to test the api endpoints.
 
 ### Procedure
 1. Clone the project from this repository.
+
   ```
   git clone git@github.com:mwenechac/loan_service.git
   ```
-2. Install virtualenv, create a virtual environment and activate it in your project directory.
-   - Install virtualenv(a tool to create isolated Python environments) with the following command:
+2. Install virtualenv(a tool to create isolated Python environments), create a virtual environment and activate it in your project directory.
+   - Install virtualenv with the following command:
       ```
       python3 -m pip install --user virtualenv
       ```
@@ -59,7 +60,7 @@ The directory structure has a modular approach for separation of concerns.
       }
     ```
  5. Run migrations.
- Navigate to the app direcroty from the root and the run the following command to run migrations and set up the database and the tables.
+ Navigate to the app direcroty from the root and the run the following command to run migrations and set up the database and tables.
     - Navigate to the app directory.
       
         ```
@@ -83,8 +84,13 @@ The directory structure has a modular approach for separation of concerns.
      
 ## Testing
 
- 1. Use postman to interact with the apis.
-    - Initiate loan: call the initiate loan api using the url: http://127.0.0.1:8000/loan/initiate. If you are not runing the project locally, subsitute the IP address with an applicable address. Make a post request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
+1. Run the service using the following command from the app directory:
+
+          ```
+          python manage.py runserver
+          ```
+ 2. Use postman to interact with the apis.
+    - Initiate loan: call the initiate loan api using the url: http://127.0.0.1:8000/loan/initiate. If you are not running the project locally, subsitute the IP address with an applicable address. Make a **POST** request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
     
         ```
            {
@@ -100,7 +106,7 @@ The directory structure has a modular approach for separation of concerns.
              "message": "A loan has been initiated"
           }
         ```
-     - Make Payment: call the make payment api using the url: http://127.0.0.1:8000/payment/pay. If you are not runing the project locally, subsitute the IP            address with an applicable address. Make a post request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
+     - Make Payment: call the make payment api using the url: http://127.0.0.1:8000/payment/pay. If you are not running the project locally, subsitute the IP            address with an applicable address. Make a **POST** request with a request body similar to the one below. **The date format is yyyy-mm-dd.**
     
         ```
            {
@@ -118,7 +124,7 @@ The directory structure has a modular approach for separation of concerns.
         ```
     - Get balance: call get balance api using the url: http://127.0.0.1:8000/balance/get-balance?date=2023-01-26. The date is passed as a parameter in the url. **The date format is yyyy-mm-dd.** If you are not runing the project locally, subsitute the localhost IP address with an applicable address
    
-        Make a get request and if the Django server is running fine you should get a 200 HTTP response similar to:
+        Make a **GET** request and if the Django server is running fine you should get a 200 HTTP response similar to:
         
         ```
           {
