@@ -8,7 +8,12 @@ import http
 
 @api_view(['GET'])
 def get_balance(request):
+	'''
+		A get method that is used to get balance on an existing loan.
+		param: date(yyyy-m-dd) str.
+	'''
 	data = {}
+
 	try:
 		given_date = request.GET.get('date')
 		try:

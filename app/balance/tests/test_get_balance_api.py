@@ -7,6 +7,10 @@ from core.models import Loan
 
 
 class GetBalanceTestCase(APITestCase):
+	'''
+		A get balance unit test used to test the 
+		get balance api on an existing loan.
+	'''
 	def setUp(self):
 		loans = Loan.objects.filter().update(cleared=1)
 		loan = Loan(

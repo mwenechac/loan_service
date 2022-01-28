@@ -5,6 +5,10 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 
 class AddPaymentTestCase(APITestCase):
+	'''
+		An add payment unit test used to simulate the 
+		addition of a payment towards an existing loan.
+	'''
 	def setUp(self):
 		loans = Loan.objects.filter().update(cleared=1)
 		loan = Loan(

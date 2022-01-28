@@ -5,11 +5,18 @@ from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from rest_framework import status
 import http
-from payment.helpers import get_annual_interest
+from core.helpers import get_annual_interest
 
 @api_view(['POST'])
 def add_payment(request):
+    '''
+		A post method that is used to make a payment.
+		param: amount int
+		param: date(yyyy-m-dd) str, should be greater or equal to current date
+	'''
+    
     data = {}
+
     try:
         serializer = PaymentSerializer(data=request.data)
         if serializer.is_valid():

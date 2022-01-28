@@ -1,12 +1,14 @@
+from datetime import datetime
 from rest_framework import serializers
 from core.models import Loan
 
 class LoanSerializer(serializers.ModelSerializer):
 
-	""" 
-		A serializer class for changing the loan data
-		to native python data type.
-	"""
+	'''
+		A loan serialier class used to convert
+		the request object into a native Python datatype
+		that can then be easily rendered into JSON content type.
+	'''
 
 	class Meta:
 		model = Loan
@@ -17,6 +19,13 @@ class LoanSerializer(serializers.ModelSerializer):
             'date': {'required': True}
         }
 	
+	def validate(self,data):
+		if data['date'] < datetime.now().date():
+			raise serializers.ValidationError(
+				{'data': 'Date must be greater than or equal to the current date.'}
+			)
+		return data
+		
 	def save(self):
 		loans = Loan.objects.filter().update(cleared=1)
 		loan = Loan(
